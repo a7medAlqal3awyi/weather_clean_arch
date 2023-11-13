@@ -1,4 +1,6 @@
-class Weather  extends Equitable {
+import 'package:equatable/equatable.dart';
+
+class Weather  extends Equatable {
   final String name;
   final String region;
   final double temp;
@@ -10,7 +12,7 @@ class Weather  extends Equitable {
   final String sunrise;
   final String sunset;
 
-  Weather({
+  const Weather({
     required this.name,
     required this.region,
     required this.temp,
@@ -22,4 +24,19 @@ class Weather  extends Equitable {
     required this.sunrise,
     required this.sunset,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    name,
+    region,
+    temp,
+    text,
+    date,
+    maxTemp,
+    minTemp,
+    avgTemp,
+    sunrise,
+    sunset,
+  ];
 }
