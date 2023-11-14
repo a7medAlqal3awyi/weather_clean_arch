@@ -6,7 +6,7 @@ import 'package:weather_clean_arch/domain/entities/weather.dart';
 import '../repo/base_repo.dart';
 
 class GetWeatherByCityUseCase implements BaseUseCase<Weather , String > {
-  final WeatherRepository baseWeatherRepository;
+  final BaseWeatherRepository baseWeatherRepository;
 
   GetWeatherByCityUseCase({required this.baseWeatherRepository});
   @override
