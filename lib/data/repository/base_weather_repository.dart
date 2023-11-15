@@ -5,19 +5,18 @@ import 'package:weather_clean_arch/domain/repo/base_repo.dart';
 
 import '../../domain/entities/weather.dart';
 
- class WeatherRopository implements BaseWeatherRepository{
-  WeatherRemoteDataSource remoteDataSource;
+class WeatherRopository implements BaseWeatherRepository {
+  BaseWeatherRemoteDataSource baseRemoteDataSource;
 
-  WeatherRopository(this.remoteDataSource);
-
+  WeatherRopository(this.baseRemoteDataSource);
 
   @override
-  Future<Either<Failure, Weather>> getWeatherByCity(String city)async{
-    final result = await remoteDataSource.getWeatherByCity(city);
-try{
-  return  Right(result as Weather);
-} on Exception catch(err){
-  return Left(err.toString() as Failure);
-}
+  Future<Either<Failure, Weather>> getWeatherByCity(String city) async {
+    try {
+      final result = await baseRemoteDataSource.getWeatherByCity(city);
+      return Right(result);
+    } on Exception catch (err) {
+      return Left(err.toString() as Failure);
+    }
   }
 }

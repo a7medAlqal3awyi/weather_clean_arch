@@ -1,27 +1,20 @@
-import 'dart:convert';
-
-import 'package:weather_clean_arch/core/api/api_contant.dart';
+import 'package:weather_clean_arch/core/api/dio_helper.dart';
 
 import '../models/weather_model.dart';
-import 'package:dio/dio.dart';
 
 abstract class BaseWeatherRemoteDataSource {
-  Future<WeatherModel?>getWeatherByCity(String city);
+  Future<WeatherModel> getWeatherByCity(String city);
 }
 
-class WeatherRemoteDataSource implements BaseWeatherRemoteDataSource{
+class WeatherRemoteDataSource implements BaseWeatherRemoteDataSource {
+  DioHelper  dio;
+
+  WeatherRemoteDataSource(this.dio);
+
   @override
-  Future<WeatherModel?> getWeatherByCity(String city) async {
-    try {
-      final dio = Dio();
-      var response = await dio.get(
-          "${ApiConstants.baseUrl}key=${ApiConstants.appKey}&q=$city&days=7");
-      print(response);
-      return WeatherModel.fromJSON(json.decode(response.data));
-    }
-    catch (e) {
-      print(e.toString());
-    }
-    return null;
+  Future<WeatherModel> getWeatherByCity(String city) async {
+ var response =  await dio.getWeatherData(city);
+ return WeatherModel.fromJSON(response);
   }
+
 }

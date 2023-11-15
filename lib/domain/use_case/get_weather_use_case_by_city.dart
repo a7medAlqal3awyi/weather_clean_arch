@@ -8,7 +8,7 @@ import '../repo/base_repo.dart';
 class GetWeatherByCityUseCase implements BaseUseCase<Weather , String > {
   final BaseWeatherRepository baseWeatherRepository;
 
-  GetWeatherByCityUseCase({required this.baseWeatherRepository});
+  GetWeatherByCityUseCase(this.baseWeatherRepository);
   @override
   Future<Either<Failure, Weather>> call(String city) async {
     return await baseWeatherRepository.getWeatherByCity(city);
