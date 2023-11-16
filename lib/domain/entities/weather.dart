@@ -24,7 +24,6 @@ class Weather  extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     name,
     country,

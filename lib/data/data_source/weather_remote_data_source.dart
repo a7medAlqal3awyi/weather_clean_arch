@@ -7,14 +7,13 @@ abstract class BaseWeatherRemoteDataSource {
 }
 
 class WeatherRemoteDataSource implements BaseWeatherRemoteDataSource {
-  DioHelper  dio;
+  DioHelper dio;
 
   WeatherRemoteDataSource(this.dio);
 
   @override
   Future<WeatherModel> getWeatherByCity(String city) async {
- var response =  await dio.getWeatherData(city);
- return WeatherModel.fromJSON(response);
+    var response = await dio.getWeatherData(city);
+    return WeatherModel.fromJSON(response);
   }
-
 }

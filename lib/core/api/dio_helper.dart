@@ -9,12 +9,14 @@ class DioHelper {
 
   Future<Map<String, dynamic>> getWeatherData(String city) async {
     try {
-      final response = await dio
-          .get('${ApiConstants.baseUrl}/forecast.json', queryParameters: {
-        'key': 'f674a61e0daa42728f9154329231103',
-        'q': city,
-        'days': '7',
-      });
+      final response = await dio.get(
+        ApiConstants.baseUrl + ApiConstants.endPoint,
+        queryParameters: {
+          'key': 'f674a61e0daa42728f9154329231103',
+          'q': city,
+          'days': '7',
+        },
+      );
       debugPrint(response.data.toString());
       if (response.statusCode == 200) {
         return response.data;
