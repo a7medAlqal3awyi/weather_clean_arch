@@ -9,7 +9,7 @@ abstract class BaseWeatherRemoteDataSource {
 class WeatherRemoteDataSource implements BaseWeatherRemoteDataSource {
   DioHelper dio;
 
-  WeatherRemoteDataSource(this.dio);
+  WeatherRemoteDataSource({required this.dio});
 
   @override
   Future<WeatherModel> getWeatherByCity(String city) async {

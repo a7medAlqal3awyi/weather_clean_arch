@@ -8,7 +8,7 @@ import '../../domain/entities/weather.dart';
 class WeatherRopository implements BaseWeatherRepository {
   BaseWeatherRemoteDataSource baseRemoteDataSource;
 
-  WeatherRopository(this.baseRemoteDataSource);
+  WeatherRopository({required this.baseRemoteDataSource});
 
   @override
   Future<Either<Failure, Weather>> getWeatherByCity(String city) async {
